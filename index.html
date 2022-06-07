@@ -152,18 +152,16 @@
         }
         @keyframes dota {
             0% {
-
-                background-color: rgba(255, 255, 255, 0.61);
-                box-shadow: #ccc 0px 0px 4px;
+                background-color: rgba(255, 255, 255, 0);
+                box-shadow: rgba(153, 153, 153, 0) 0px 0px 5px;
             }
             50% {
                 background-color: rgb(206, 252, 255);
-                box-shadow: rgb(255, 255, 255) 0px 0px 1px;
+                box-shadow: rgb(255, 255, 255) 0px 0px 2px;
             }
             100%{
-
-                background-color: rgba(255, 255, 255, 0.61);
-                box-shadow: #ccc 0px 0px 4px;
+                background-color: rgba(255, 255, 255, 0);
+                box-shadow: rgba(153, 153, 153, 0) 0px 0px 5px;
             }
         }
 
@@ -215,41 +213,57 @@
             let man = document.getElementById('bg')
             man.innerHTML = ""
 
-            let nm = rand(15)
-            while (nm < 5) nm = rand(15)
+            let nm = rand(30)
+            while (nm < 10) nm = rand(30)
             for (let i = 0; i < nm; i++) {
-                let div = document.createElement('div')
-                let wtime = rand(100)
-                while (wtime < 30) wtime = rand(100)
-                let w = rand(5)
+                setTimeout(function () {
+                    genew()
+                }, rand(20) * 1000)
+            }
+        }
+        function genew(){
+            let man = document.getElementById('bg')
+            let sd = gen()
+            man.appendChild(sd.d)
+
+            setTimeout(function() {
+                document.getElementById('bg').removeChild(sd.d)
+                genew()
+            }, sd.t * 1000);
+        }
+        function gen(){
+            let div = document.createElement('div')
+            let wtime = rand(400)
+            while (wtime < 50) wtime = rand(400)
+            let w = rand(5)
+            let x = rand((innerWidth - w))
+            let y = rand((innerHeight - w))
+            
+            div.style.position = 'absolute'
+            div.style.width = w + 'px'
+            div.style.height = w + 'px'
+            div.style.animation = `dota ${wtime / 10}s ease infinite`
+            div.style.background = `rgba( 255, 255, 255, ${Math.random() + 0.5} )`
+            div.classList.add('dot')
+            
+            div.style.top = y + 'px'
+            div.style.left = x + 'px'
+
+            
+            var s1 = document.getElementById("1")
+            var s2 = document.getElementById("2")
+            var s3 = document.getElementById("3")
+            var s4 = document.getElementById("4")
+
+            while (elementsOverlap(div, s1) || elementsOverlap(div, s2) || elementsOverlap(div, s3) || elementsOverlap(div, s4)){
                 let x = rand((innerWidth - w))
                 let y = rand((innerHeight - w))
-                
-                // apply styles
-                div.style.position = 'absolute'
-                div.style.width = w + 'px'
-                div.style.height = w + 'px'
-                div.style.animation = `dota ${wtime / 10}s ease infinite`
-                div.style.background = `rgba( 255, 255, 255, ${Math.random() + 0.5} )`
-                div.classList.add('dot')
-                
+
                 div.style.top = y + 'px'
                 div.style.left = x + 'px'
-                man.appendChild(div)
-
-                var s1 = document.getElementById("1")
-                var s2 = document.getElementById("2")
-                var s3 = document.getElementById("3")
-                var s4 = document.getElementById("4")
-
-                while (elementsOverlap(div, s1) || elementsOverlap(div, s2) || elementsOverlap(div, s3) || elementsOverlap(div, s4) ){
-                    let x = rand((innerWidth - w))
-                    let y = rand((innerHeight - w))
-
-                    div.style.top = y + 'px'
-                    div.style.left = x + 'px'
-                }
             }
+            
+            return {d: div, t: wtime / 10 }
         }
 
        
@@ -269,7 +283,7 @@
         <span class="slider round"></span>
     </label>
     <p>martinfiu#5814</p>
-    <div class="div">
+    <div class="div" id="hju">
         <span id="1"></span>
         <span id="2"></span>
         <span id="3"></span>
