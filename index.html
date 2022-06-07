@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 <head>
+    <title> Background </title>
+    <meta charset="utf-8" />
     <style>
         .hr{
             height: 100vh;
@@ -147,21 +149,20 @@
 
         .dot {
             border-radius: 50%;
-            box-shadow: #ccc 0px 0px 4px;
             filter: blur(1px);
         }
         @keyframes dota {
             0% {
-                background-color: rgba(255, 255, 255, 0);
-                box-shadow: rgba(153, 153, 153, 0) 0px 0px 5px;
+                background-color: transparent;
+                box-shadow: none;
             }
             50% {
                 background-color: rgb(206, 252, 255);
-                box-shadow: rgb(255, 255, 255) 0px 0px 2px;
+                box-shadow: rgb(255, 255, 255) 0px 0px 1px;
             }
             100%{
-                background-color: rgba(255, 255, 255, 0);
-                box-shadow: rgba(153, 153, 153, 0) 0px 0px 5px;
+                background-color: transparent;
+                box-shadow: none;
             }
         }
 
@@ -169,8 +170,8 @@
         .re {
             position: absolute;
             left: 85.3%;
-            border: none;
-            margin: none;
+            border: 0px;
+            margin: 0px;
             height: fit-content;
             width: fit-content;
             line-height: 0px;
@@ -268,6 +269,7 @@
 
        
     </script>
+    
 </head>
 <body onload="ft()">
     <div id="fr" class="hr fr"> </div>
